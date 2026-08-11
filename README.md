@@ -179,3 +179,6 @@ Além disso, deverá representar os relacionamentos:
 -   Usuário **faz** Comentário
     
 -   Postagem **recebe** Comentário
+
+## Modelagem Conceitual
+![](modelo-conceitual-v1.png)
