@@ -1,5 +1,5 @@
 
-# Projeto de Banco de Dados
+# Projeto de Banco de Dados (parte 2)
 
 **Nome do Projeto:** Rede Social Conecta  
 **Equipe de Desenvolvimento:** Dom Johnny Studios
