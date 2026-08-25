@@ -181,7 +181,7 @@ Além disso, deverá representar os relacionamentos:
 -   Postagem **recebe** Comentário
 
 ## Modelagem Conceitual
-![](modelo-conceitual-v1.png)
+![](modelo_conceitual.pdf)
 
 ## Modelagem Logica
 ![](modelo_logico.png)
