@@ -185,3 +185,141 @@ Além disso, deverá representar os relacionamentos:
 
 ## Modelagem Logica
 ![](modelo_logico.png)
+
+# DOCUMENTO DE REQUISITOS — REDE SOCIAL
+
+**Módulo: Postagens e Comentários**
+
+## 1. OBJETIVO
+
+O sistema deverá permitir que usuários cadastrados publiquem postagens e interajam por meio de comentários.
+
+## 2. ENTIDADES PRINCIPAIS
+
+* Usuário
+* Postagem
+* Comentário
+
+## 3. REQUISITOS FUNCIONAIS
+
+**RF01 — Cadastrar usuário**
+O sistema deverá permitir o cadastro de usuários com nome completo, e-mail, senha e data de cadastro.
+
+**RF02 — Identificar usuário**
+Cada usuário deverá possuir um identificador único (`id_usuario`).
+
+**RF03 — Criar postagem**
+O sistema deverá permitir que um usuário cadastrado crie uma postagem informando o texto e a data/hora.
+
+**RF04 — Relacionar postagem ao usuário**
+Cada postagem deverá estar vinculada a um único usuário autor. Um usuário poderá criar várias postagens.
+
+**RF05 — Criar comentário**
+O sistema deverá permitir que um usuário cadastrado faça comentários em postagens.
+
+**RF06 — Relacionar comentário à postagem**
+Cada comentário deverá pertencer a uma única postagem. Uma postagem poderá receber vários comentários.
+
+**RF07 — Relacionar comentário ao usuário**
+Cada comentário deverá estar vinculado ao usuário que o realizou. Um usuário poderá realizar vários comentários.
+
+**RF08 — Consultar postagens**
+O sistema deverá permitir visualizar as postagens cadastradas e seus respectivos autores.
+
+**RF09 — Consultar comentários**
+O sistema deverá permitir visualizar os comentários associados a cada postagem e seus respectivos autores.
+
+## 4. REQUISITOS DE DADOS
+
+### Usuário
+
+* `id_usuario`: chave primária
+* `nome_completo`
+* `email`
+* `senha`
+* `data_cadastro`
+
+### Postagem
+
+* `id_postagem`: chave primária
+* `id_usuario`: chave estrangeira para Usuário
+* `texto`
+* `data_hora`
+
+### Comentário
+
+* `id_comentario`: chave primária
+* `id_postagem`: chave estrangeira para Postagem
+* `id_usuario`: chave estrangeira para Usuário
+* `texto`
+* `data_hora`
+
+## 5. REGRAS DE NEGÓCIO
+
+**RN01 — E-mail único**
+O e-mail de cada usuário deverá ser único no sistema.
+
+**RN02 — Autor da postagem**
+Toda postagem deverá possuir um único usuário como autor.
+
+**RN03 — Autor do comentário**
+Todo comentário deverá possuir um único usuário como autor.
+
+**RN04 — Postagem do comentário**
+Todo comentário deverá estar associado a uma postagem existente.
+
+**RN05 — Postagens por usuário**
+Um usuário poderá criar várias postagens.
+
+**RN06 — Comentários por postagem**
+Uma postagem poderá receber vários comentários.
+
+**RN07 — Comentários por usuário**
+Um usuário poderá realizar vários comentários.
+
+**RN08 — Integridade referencial**
+A exclusão de registros deverá respeitar as regras de integridade referencial definidas no banco de dados.
+
+## 6. RELACIONAMENTOS DO MODELO CONCEITUAL
+
+* **Usuário (1) — (N) Postagem:** relacionamento **“cria”**.
+* **Usuário (1) — (N) Comentário:** relacionamento **“faz”**.
+* **Postagem (1) — (N) Comentário:** relacionamento **“recebe”**.
+
+## 7. MODELO LÓGICO
+
+### USUARIO
+
+```text
+USUARIO (
+    id_usuario PK,
+    nome_completo,
+    email,
+    senha,
+    data_cadastro
+)
+```
+
+### POSTAGEM
+
+```text
+POSTAGEM (
+    id_postagem PK,
+    id_usuario FK → USUARIO.id_usuario,
+    texto,
+    data_hora
+)
+```
+
+### COMENTARIO
+
+```text
+COMENTARIO (
+    id_comentario PK,
+    id_postagem FK → POSTAGEM.id_postagem,
+    id_usuario FK → USUARIO.id_usuario,
+    texto,
+    data_hora
+)
+```
+
