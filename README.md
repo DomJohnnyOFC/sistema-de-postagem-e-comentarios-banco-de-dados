@@ -182,3 +182,6 @@ Além disso, deverá representar os relacionamentos:
 
 ## Modelagem Conceitual
 ![](modelo-conceitual-v1.png)
+
+## Modelagem Logica
+![](modelo_logico.png)
